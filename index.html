@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var p=JSON.parse(localStorage.getItem("safar-prefs")||"{}");document.documentElement.dataset.theme=p.theme||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");if(p.view==="phone")document.documentElement.classList.add("phone")}catch(e){document.documentElement.dataset.theme="dark"}</script>
+<title>Safar byudjeti</title>
+<meta name="theme-color" content="#0b1f3a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Safar byudjeti">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg class="bg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--s1)"/><stop offset=".55" style="stop-color:var(--s2)"/><stop offset="1" style="stop-color:var(--s3)"/></linearGradient><radialGradient id="sun"><stop offset="0" stop-color="#ffe29a"/><stop offset="1" stop-color="#ffc857"/></radialGradient></defs>
+<rect width="1920" height="1080" fill="url(#sky)"/>
+<g style="fill:#fff7ec;opacity:var(--staro)"><circle cx="180" cy="90" r="3"/><circle cx="420" cy="160" r="2"/><circle cx="760" cy="70" r="3"/><circle cx="1010" cy="130" r="2"/><circle cx="1330" cy="60" r="3"/><circle cx="1700" cy="110" r="2"/></g>
+<circle cx="1500" cy="300" r="150" fill="#ffc857" opacity=".18"/><circle cx="1500" cy="300" r="100" fill="url(#sun)"/>
+<path d="M-40 660C300 440 700 560 1100 380S1700 300 1960 480" fill="none" stroke="#ffc857" stroke-width="5" stroke-dasharray="4 22" stroke-linecap="round" opacity=".8"/>
+<g transform="translate(1500,338) rotate(-12)"><polygon points="0,0 100,-26 48,14 36,46 22,16" style="fill:var(--plane)"/></g>
+<polygon points="0,1080 0,710 260,560 480,680 760,510 1060,700 1340,580 1620,690 1920,540 1920,1080" style="fill:var(--m1)" opacity=".9"/>
+<polygon points="0,1080 0,800 200,690 520,810 880,670 1200,800 1500,710 1920,810 1920,1080" style="fill:var(--m2)"/></svg>
+
+<header class="top"><button class="logo" data-go="home"><i data-i="plane"></i>Safar byudjeti</button><div class="hr"><button class="who sq vbtn" id="b-view" type="button"></button><button class="who sq" id="b-theme" type="button"></button><button class="who" data-go="acc"><i data-i="user"></i><span id="acc-name">Hisob ochish</span></button></div></header>
+<main>
+
+<section class="view" id="v-home">
+<div class="hero"><h1>Safar byudjeti</h1><p id="hello">Xush kelibsiz!</p><p>Safar xarajatini hisoblang, marshrutni xaritada ko'ring, xarajatlaringizni yozib boring va AI maslahatchidan tavsiya oling.</p><span class="badge" id="status">Ma'lumotlar brauzerda saqlanadi</span></div>
+<div class="card" id="acc-banner"><h3>Hisob oching</h3><p class="muted" style="margin-top:0">Hisob ochsangiz, xarajatlaringiz, safarlaringiz va yuk ro'yxatingiz sizga biriktirilib saqlanadi.</p><button class="btn" data-go="acc"><i data-i="user"></i>Hisob ochish</button></div>
+<div class="cards">
+<button class="tile" data-go="calc"><span class="ic"><i data-i="calc"></i></span><b>Kalkulyator</b><span class="d">Jami xarajat, muddat va kishiga to'g'ri keladigan summa</span></button>
+<button class="tile" data-go="map"><span class="ic"><i data-i="map"></i></span><b>Sayohat xaritasi</b><span class="d">Masofa, yo'l vaqti, navigator va tezlik</span></button>
+<button class="tile" data-go="exp"><span class="ic"><i data-i="wallet"></i></span><b>Xarajatlarim</b><span class="d">Sarflarni yozish va statistika</span></button>
+<button class="tile" data-go="ai"><span class="ic"><i data-i="bot"></i></span><b>AI maslahatchi</b><span class="d">Tejash va rejalashtirish bo'yicha maslahat</span></button>
+<button class="tile" data-go="pack"><span class="ic"><i data-i="list"></i></span><b>Yuk ro'yxati</b><span class="d">Safarga olinadigan narsalar</span></button>
+<button class="tile" data-go="trips"><span class="ic"><i data-i="bookmark"></i></span><b>Safarlarim</b><span class="d">Saqlangan marshrutlar</span></button>
+<button class="tile" data-go="hist"><span class="ic"><i data-i="clock"></i></span><b>Tarix</b><span class="d">Oxirgi hisoblashlaringiz</span></button>
+<button class="tile" data-go="acc"><span class="ic"><i data-i="user"></i></span><b>Hisob</b><span class="d">Profil va ma'lumotlar</span></button>
+<button class="tile" data-go="faq"><span class="ic"><i data-i="help"></i></span><b>Savollar</b><span class="d">Ko'p so'raladigan savollar</span></button>
+</div></section>
+
+<section class="view" id="v-calc" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="calc"></i>Kalkulyator</h2>
+<form id="form" class="card" novalidate>
+<div class="fields">
+<fieldset><legend>Umumiy xarajatlar</legend>
+<label>Umumiy transport summasi<input type="number" id="transport" min="0" step="any" inputmode="decimal" placeholder="Masalan: 100"></label>
+<label>Umumiy tunash summasi<input type="number" id="lodging" min="0" step="any" inputmode="decimal" placeholder="Masalan: 200"></label></fieldset>
+<fieldset><legend>Guruh va ovqat</legend>
+<label>Bir kishining kunlik ovqat summasi<input type="number" id="foodPerDay" min="0" step="any" inputmode="decimal" placeholder="Masalan: 50"></label>
+<div class="row"><label>Kunlar soni<input type="number" id="days" min="1" step="1" inputmode="numeric" placeholder="2"></label><label>Odamlar soni<input type="number" id="people" min="1" step="1" inputmode="numeric" placeholder="2"></label></div></fieldset>
+<fieldset class="wide"><legend>Safar muddati</legend>
+<div class="row"><label>Boshlanish sanasi<input type="date" id="d-start"></label><label>Tugash sanasi<input type="date" id="d-end"></label></div>
+<p id="d-hint" class="muted" style="margin:10px 0 0">Ikkala sanani tanlasangiz, kunlar soni avtomatik hisoblanadi.</p></fieldset>
+<fieldset class="wide"><legend>Qo'shimcha (ixtiyoriy)</legend><div class="row">
+<label>Valyuta<select id="currency"><option value="so'm">UZS (so'm)</option><option value="$">USD ($)</option><option value="€">EUR (€)</option></select></label>
+<label>Byudjet chegarasi<input type="number" id="limit" min="0" step="any" inputmode="decimal" placeholder="Masalan: 600"></label></div></fieldset>
+</div>
+<div id="error" class="error" role="alert" hidden></div>
+<div class="btns"><button type="submit" class="btn main"><i data-i="check"></i>Hisoblash</button><button type="button" id="btn-example" class="btn ghost">Misolni yuklash</button><button type="button" id="btn-clear" class="btn ghost">Tozalash</button></div>
+</form>
+<div id="res-empty" class="placeholder">Natijani ko'rish uchun ma'lumotlarni kiriting va «Hisoblash» tugmasini bosing.</div>
+<div id="out" hidden>
+<div class="card"><h3>Natija</h3>
+<div class="line" id="r-dur-l" hidden><span>Safar muddati</span><b id="r-dur"></b></div>
+<div class="line"><span>Transport</span><b id="r-transport"></b></div>
+<div class="line"><span>Tunash</span><b id="r-lodging"></b></div>
+<div class="line"><span>Ovqat <small id="r-ff"></small></span><b id="r-food"></b></div>
+<div class="line total"><span>Jami safar xarajati</span><b id="r-total"></b></div>
+<div class="line per"><span>Kishiga to'g'ri keladi</span><b id="r-per"></b></div>
+<div class="line"><span>Bir kunlik xarajat</span><b id="r-day"></b></div>
+<div id="limit-msg" class="note" hidden></div>
+<div class="btns"><button type="button" id="btn-adv" class="btn small"><i data-i="bot"></i>AI maslahat olish</button><button type="button" id="btn-copy" class="btn small ghost"><i data-i="copy"></i>Nusxa olish</button></div></div>
+<div class="card"><h3>Diagramma</h3><div class="chart"><svg id="donut" viewBox="0 0 200 200" role="img" aria-label="Xarajatlar diagrammasi"></svg><ul id="legend"></ul></div></div>
+<div class="card"><h3>Odam soni o'zgarsa</h3><div class="scroll"><table><thead><tr><th>Odam</th><th>Jami</th><th>Kishiga</th></tr></thead><tbody id="cmp"></tbody></table></div></div>
+</div></section>
+
+<section class="view" id="v-map" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="map"></i>Sayohat xaritasi</h2>
+<form id="mform" class="card" novalidate>
+<div class="row"><label>Qayerdan<input id="m-from" list="cities" value="Toshkent" autocomplete="off"></label><label>Qayerga boradi<input id="m-to" list="cities" placeholder="Masalan: Samarqand" autocomplete="off"></label></div>
+<div class="btns" style="margin-top:0"><button type="button" id="m-loc" class="btn small ghost"><i data-i="locate"></i>Joriy joylashuvimni olish</button></div>
+<h3 style="margin-top:16px">Transport turi</h3><div class="modes" id="modes"></div>
+<div class="row" style="margin-top:14px"><label>O'rtacha tezlik (km/soat)<input type="number" id="m-speed" min="1" step="any" inputmode="decimal"></label><label>Yo'lga chiqish vaqti<input type="datetime-local" id="m-dep"></label></div>
+<div id="m-err" class="error" role="alert" hidden></div>
+<div class="btns"><button type="submit" id="m-go" class="btn main"><i data-i="nav"></i>Marshrutni qurish</button></div>
+</form>
+<datalist id="cities"></datalist>
+<div id="m-empty" class="placeholder">Manzilni yozing, transport turini tanlang va «Marshrutni qurish» ni bosing.</div>
+<div id="m-out" hidden>
+<div class="card"><svg id="map" class="map" viewBox="0 0 800 420" role="img" aria-label="Marshrut xaritasi"></svg>
+<div class="stats" id="m-stats" style="margin:14px 0 0"></div>
+<p class="muted" id="m-note" style="margin:12px 0 0;font-size:14px"></p></div>
+<div class="card"><h3>Navigator</h3>
+<div class="navg"><svg id="compass" viewBox="0 0 120 120" role="img" aria-label="Yo'nalish ko'rsatkichi"></svg><svg id="gauge" viewBox="0 0 200 125" role="img" aria-label="Tezlik ko'rsatkichi"></svg>
+<div class="navi"><div class="line"><span>Qolgan masofa</span><b id="n-rem">—</b></div><div class="line"><span>Yo'nalish</span><b id="n-dir">—</b></div><div class="line"><span>Taxminiy yetib borish</span><b id="n-eta">—</b></div><div class="line"><span>GPS holati</span><b id="n-gps">o'chiq</b></div></div></div>
+<div id="n-msg" class="note" hidden></div>
+<div class="btns"><button type="button" id="n-start" class="btn"><i data-i="nav"></i>Navigatsiyani boshlash</button><button type="button" id="n-stop" class="btn ghost" hidden><i data-i="x"></i>To'xtatish</button><a id="n-gmaps" class="btn ghost" target="_blank" rel="noopener"><i data-i="ext"></i>Google Maps'da ochish</a><button type="button" id="n-save" class="btn ghost"><i data-i="bookmark"></i>Safarni saqlash</button></div></div>
+<div class="card" id="fuel" hidden><h3>Yoqilg'i xarajati (mashina)</h3>
+<div class="row"><label>Sarfi (litr / 100 km)<input type="number" id="f-cons" min="0" step="any" inputmode="decimal" placeholder="Masalan: 8"></label><label>Bir litr narxi<input type="number" id="f-price" min="0" step="any" inputmode="decimal" placeholder="Narx"></label></div>
+<div class="line total"><span>Taxminiy yoqilg'i xarajati</span><b id="f-out">—</b></div>
+<div class="btns"><button type="button" id="f-use" class="btn small" disabled><i data-i="calc"></i>Kalkulyatorga qo'yish</button></div></div>
+</div></section>
+
+<section class="view" id="v-exp" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="wallet"></i>Xarajatlarim</h2>
+<form id="eform" class="card"><h3>Yangi xarajat</h3>
+<div class="row"><label>Nomi<input id="e-name" maxlength="60" placeholder="Masalan: Taksi"></label><label>Summa<input type="number" id="e-amt" min="0" step="any" inputmode="decimal" placeholder="Qancha to'ladingiz"></label></div>
+<label style="margin-top:12px">Turi<select id="e-cat"><option>Transport</option><option>Tunash</option><option>Ovqat</option><option>Boshqa</option></select></label>
+<div id="e-err" class="error" hidden></div>
+<div class="btns"><button type="submit" class="btn main"><i data-i="plus"></i>Qo'shish</button></div></form>
+<div id="e-empty" class="placeholder">Hozircha xarajat yo'q. Birinchisini yozing.</div>
+<div id="e-box" hidden>
+<div class="stats" id="stats"></div>
+<div class="card"><h3>Turlar bo'yicha</h3><div id="cats"></div></div>
+<div class="card"><h3>Barcha xarajatlar</h3><ul class="list" id="elist"></ul><div class="btns"><button type="button" id="e-clear" class="btn small ghost"><i data-i="trash"></i>Hammasini o'chirish</button></div></div>
+</div></section>
+
+<section class="view" id="v-ai" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="bot"></i>AI maslahatchi</h2>
+<div class="card"><p class="muted" style="margin-top:0">AI sizning oxirgi hisobingiz, marshrutingiz va xarajatlaringizni hisobga olib javob beradi.</p>
+<div class="chips"><button class="chip" data-q="Mening safar byudjetim bo'yicha maslahat ber.">Byudjet maslahati</button><button class="chip" data-q="Mening xarajatlarimni tahlil qil va nimada tejash mumkinligini ayt.">Xarajatlarimni tahlil qil</button><button class="chip" data-q="Mening marshrutim bo'yicha yo'l uchun foydali maslahatlar ber.">Marshrut maslahati</button><button class="chip" data-q="Safar xarajatini qanday kamaytirish mumkin? 5 ta amaliy maslahat ber.">Tejash yo'llari</button></div>
+<div class="log" id="log" aria-live="polite"></div>
+<div class="ask"><input id="q" maxlength="400" placeholder="Savolingizni yozing..."><button class="btn" id="send"><i data-i="send"></i>Yuborish</button></div>
+<div id="ai-note" class="note" hidden></div></div></section>
+
+<section class="view" id="v-pack" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="list"></i>Yuk ro'yxati</h2>
+<div class="card"><form id="pform" class="ask"><input id="p-in" maxlength="60" placeholder="Masalan: Quyoshdan saqlovchi krem"><button class="btn" type="submit"><i data-i="plus"></i>Qo'shish</button></form>
+<div class="btns"><button type="button" id="p-preset" class="btn small ghost">Standart ro'yxatni qo'shish</button><button type="button" id="p-clean" class="btn small ghost">Tayyorlarini o'chirish</button></div></div>
+<div class="card"><p class="muted" id="p-empty" style="margin:0">Ro'yxat bo'sh.</p><div id="p-box" hidden><div class="line"><span id="p-cnt"></span></div><div class="prog"><i id="p-bar" style="width:0"></i></div><ul class="list" id="p-list"></ul></div></div></section>
+
+<section class="view" id="v-trips" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="bookmark"></i>Safarlarim</h2>
+<div class="card"><p id="t-empty" class="muted" style="margin:0">Hozircha saqlangan safar yo'q. Xaritada marshrut qurib, «Safarni saqlash» ni bosing.</p><ul class="list" id="t-list"></ul></div></section>
+
+<section class="view" id="v-hist" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="clock"></i>Tarix</h2>
+<div class="card"><p id="hist-empty" class="muted" style="margin:0">Hozircha hisoblash yo'q.</p><ul class="list" id="hist"></ul><button type="button" id="btn-hclear" class="btn small ghost" hidden><i data-i="trash"></i>Tarixni tozalash</button></div></section>
+
+<section class="view" id="v-acc" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="user"></i>Hisob</h2>
+<form id="aform" class="card"><div class="row" style="align-items:center;margin-bottom:14px"><div class="bigav" id="av" style="flex:none">?</div><p class="muted" id="acc-info" style="margin:0"></p></div>
+<div class="row"><label>Ism<input id="a-name" maxlength="40" placeholder="Ismingiz"></label><label>Shahar<input id="a-city" maxlength="40" placeholder="Masalan: Toshkent"></label></div>
+<div id="a-err" class="error" hidden></div>
+<div class="btns"><button type="submit" class="btn main" id="a-save"><i data-i="check"></i>Hisob ochish</button></div></form>
+<div class="card"><h3>Ko'rinish</h3>
+<p class="muted" style="margin-top:0">Rejim</p>
+<div class="seg"><button type="button" data-theme-set="dark"><i data-i="moon"></i>Tungi</button><button type="button" data-theme-set="light"><i data-i="sun"></i>Kunduzgi</button></div>
+<p class="muted">Ko'rinish</p>
+<div class="seg" style="margin-bottom:0"><button type="button" data-view-set="auto"><i data-i="monitor"></i>Avto</button><button type="button" data-view-set="phone"><i data-i="phone"></i>Telefon</button></div></div>
+<div class="card" id="a-stats" hidden><h3>Ma'lumotlaringiz</h3><div class="stats" id="a-grid" style="margin:0"></div><div class="btns"><button type="button" id="a-reset" class="btn small ghost"><i data-i="trash"></i>Barcha ma'lumotlarni o'chirish</button></div></div></section>
+
+<section class="view" id="v-faq" hidden>
+<button class="btn small ghost back" data-go="home"><i data-i="back"></i>Bosh sahifa</button><h2><i data-i="help"></i>Savollar</h2>
+<details><summary>Hisob qanday ishlaydi?</summary><p>Hisobingiz claude.ai'ga kirishingiz bilan bog'lanadi, alohida parol kerak emas. Ma'lumotlaringiz faqat sizga ko'rinadi. Tizimga kirmagan bo'lsangiz, ular faqat shu brauzerda saqlanadi.</p></details>
+<details><summary>Marshrut vaqti qanchalik aniq?</summary><p>Bu taxminiy hisob: to'g'ri chiziq masofasi yo'l koeffitsiyentiga ko'paytirilib, tanlangan o'rtacha tezlikka bo'linadi. Tirbandlik va aniq yo'l uchun «Google Maps'da ochish» tugmasidan foydalaning.</p></details>
+<details><summary>Navigator qanday ishlaydi?</summary><p>Brauzer joylashuvga ruxsat bersa, qolgan masofa, yo'nalish va GPS tezligi jonli yangilanadi. Ruxsat bo'lmasa, o'rtacha tezlik ko'rsatiladi.</p></details>
+<details><summary>Ovqat summasi nega odam soniga ko'paytiriladi?</summary><p>Kunlik ovqat summasi bir kishi uchun kiritiladi, guruh uchun kun va odam soniga ko'paytiriladi.</p></details>
+<details><summary>AI maslahat qanchalik ishonchli?</summary><p>U umumiy tavsiya beradi. Qaror qilishdan oldin narxlarni o'zingiz tekshiring.</p></details>
+</section>
+</main>
+<footer>Safar byudjeti · Bilet 020</footer>
+<nav class="tabs" aria-label="Asosiy menyu">
+<button class="tab on" data-go="home"><i data-i="home"></i>Bosh</button>
+<button class="tab" data-go="calc"><i data-i="calc"></i>Hisob-kitob</button>
+<button class="tab" data-go="map"><i data-i="map"></i>Xarita</button>
+<button class="tab" data-go="exp"><i data-i="wallet"></i>Xarajat</button>
+<button class="tab" data-go="ai"><i data-i="bot"></i>AI</button>
+</nav>
+<div id="toast" class="toast" role="status"></div>
+
+<script src="js/core.js"></script>
+<script src="js/pages.js"></script>
+<script src="js/account.js"></script>
+<script src="js/calc.js"></script>
+<script src="js/map.js"></script>
+<script src="js/expenses.js"></script>
+<script src="js/pack.js"></script>
+<script src="js/history.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
